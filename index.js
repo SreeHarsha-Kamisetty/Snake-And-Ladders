@@ -73,5 +73,43 @@ class Game{
         this.ladders.set(start,end);
     }
 
+
+    start(){
+        let player = 0;
+
+        while(true){
+            const currentPlayer = this.players[player];
+            const diceRoll = currentPlayer.rollDice();
+            const start = currentPlayer.position;
+            const end = this.checkPosition(currentPlayer, diceRoll)
+
+
+            console.log(`${currentPlayer.name} has rolled a ${diceRoll} and moved from ${start} to ${end}`)
+
+            if(currentPlayer.gameOver()){
+                console.log(`${currentPlayer.name} wins the game`);
+                break;
+            }
+
+            player = (player +1)% this.players.length;
+        }
+    }
+    checkPosition(player,diceValue){
+        let newPos = player.position + diceValue;
+
+        if(newPos > 100){
+            newPos = player.position
+        }
+        if(this.snakes.has(newPos)){
+            newPos = this.snakes.get(newPos)
+        }
+        if(this.ladders.has(newPos)){
+            newPos = this.ladders.get(newPos)
+        }
+
+        player.position = newPos
+
+        return newPos
+    }
 }
 
