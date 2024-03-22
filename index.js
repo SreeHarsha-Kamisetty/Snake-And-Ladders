@@ -83,9 +83,6 @@ class Game{
             const start = currentPlayer.position;
             const end = this.checkPosition(currentPlayer, diceRoll)
 
-
-            console.log(`${currentPlayer.name} has rolled a ${diceRoll} and moved from ${start} to ${end}`)
-
             if(currentPlayer.gameOver()){
                 console.log(`${currentPlayer.name} wins the game`);
                 break;
@@ -101,13 +98,16 @@ class Game{
             newPos = player.position
         }
         if(this.snakes.has(newPos)){
-            
+            console.log(`${player.name} has encountered snake at ${newPos} `)
             newPos = this.snakes.get(newPos)
+            console.log(`${player.name} moved to ${newPos}`)
         }
         if(this.ladders.has(newPos)){
+            console.log(`${player.name} has encountered ladder at ${newPos} `)
             newPos = this.ladders.get(newPos)
+            console.log(`${player.name} moved to ${newPos}`)
         }
-
+         console.log(`${player.name} has rolled a ${diceValue} and moved from ${player.position} to ${newPos}`)
         player.position = newPos
 
         return newPos
