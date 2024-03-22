@@ -101,6 +101,7 @@ class Game{
             newPos = player.position
         }
         if(this.snakes.has(newPos)){
+            
             newPos = this.snakes.get(newPos)
         }
         if(this.ladders.has(newPos)){
@@ -116,10 +117,30 @@ class Game{
 const newGame = new Game();
 
 newGame.createSnake(16, 6);
+newGame.createSnake(62,5);
+newGame.createSnake(33, 6);
+newGame.createSnake(49, 9);
+newGame.createSnake(88, 16);
+newGame.createSnake(41, 20);
+newGame.createSnake(56, 53);
+newGame.createSnake(98, 64);
+newGame.createSnake(93, 73);
+newGame.createSnake(95, 75);
 
-newGame.createLadder(1, 99);
 
-newGame.createPlayer("Harsha")
-newGame.createPlayer("Sree")
+
+
+newGame.createLadder(2, 37);
+newGame.createLadder(27,46);
+newGame.createLadder(10,32);
+newGame.createLadder(51,68);
+newGame.createLadder(61,79);
+newGame.createLadder(65,84);
+newGame.createLadder(71, 91);
+newGame.createLadder(81,100);
+
+newGame.createPlayer("Player3")
+newGame.createPlayer("Player2")
+newGame.createPlayer("Player1")
 
 newGame.start();
