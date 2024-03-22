@@ -28,8 +28,6 @@
 
     gameOver() - will check if player has reached the top and return true if reached the top
 
-5. Point
-    Point - used to display coordinates on the board
 
 
 */
@@ -46,8 +44,12 @@ class Player{
     currentPosition(){
         return this.position;
     }
-    move(){
-        
+    move(count){
+        this.position += count;
+        return this.position
+    }
+    gameOver(){
+        return this.position == 100
     }
 }
 
