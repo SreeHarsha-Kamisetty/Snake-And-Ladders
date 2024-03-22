@@ -1,0 +1,21 @@
+{
+  "name": "snake-and-ladders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "game": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SreeHarsha-Kamisetty/Snake-And-Ladders.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SreeHarsha-Kamisetty/Snake-And-Ladders/issues"
+  },
+  "homepage": "https://github.com/SreeHarsha-Kamisetty/Snake-And-Ladders#readme"
+}
