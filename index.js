@@ -113,3 +113,13 @@ class Game{
     }
 }
 
+const newGame = new Game();
+
+newGame.createSnake(16, 6);
+
+newGame.createLadder(1, 99);
+
+newGame.createPlayer("Harsha")
+newGame.createPlayer("Sree")
+
+newGame.start();
