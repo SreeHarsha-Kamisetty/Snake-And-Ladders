@@ -1,4 +1,4 @@
-
+const fs = require("fs")
 // Classes required
 /*
 1. Game
@@ -75,6 +75,11 @@ class Game{
 
 
     start(){
+        this.addSnakes()
+        this.addLadders()
+        
+        this.addPlayers()
+        console.log(this.players)
         let player = 0;
 
         while(true){
@@ -114,37 +119,44 @@ class Game{
     }
 
     addSnakes(){
-        let snakeCount = parseInt(prompt('Enter the snakes count: '))
+        let snakes = fs.readFileSync("./snakes.txt","utf-8")
+        snakes = snakes.split('\n');
+        let snakeCount = parseInt(snakes[0]);
+
+        for(let i=1 ;i<=snakeCount;i++){
+            let snakeCoor = snakes[i].split(' ');
+            let head = parseInt(snakeCoor[0]);
+            let tail = parseInt(snakeCoor[1]);;
+            this.createSnake(head, tail);
+        }
+    }
+
+    addLadders(){
+        let ladder= fs.readFileSync("./ladders.txt","utf-8")
+        
+        ladder = ladder.split('\n');
+        let ladderCount = parseInt(ladder[0]);
+
+        for(let i=1 ;i<=ladderCount;i++){
+            let ladderCoor = ladder[i].split(' ');
+            let start = parseInt(ladderCoor[0]);
+            let end = parseInt(ladderCoor[1]);;
+            this.createLadder(start, end);
+        }
+    }
+    addPlayers(){
+        let players= fs.readFileSync("./players.txt","utf-8")
+        
+        players = players.split('\n');
+        let playerCount = parseInt(players[0]);
+        
+        for(let i=1 ;i<=playerCount;i++){
+            
+            this.createPlayer(String(players[i].replace("\r", "")))
+        }
     }
 }
 
 const newGame = new Game();
-newGame.addSnakes();
-// newGame.createSnake(16, 6);
-// newGame.createSnake(62,5);
-// newGame.createSnake(33, 6);
-// newGame.createSnake(49, 9);
-// newGame.createSnake(88, 16);
-// newGame.createSnake(41, 20);
-// newGame.createSnake(56, 53);
-// newGame.createSnake(98, 64);
-// newGame.createSnake(93, 73);
-// newGame.createSnake(95, 75);
 
-
-
-
-// newGame.createLadder(2, 37);
-// newGame.createLadder(27,46);
-// newGame.createLadder(10,32);
-// newGame.createLadder(51,68);
-// newGame.createLadder(61,79);
-// newGame.createLadder(65,84);
-// newGame.createLadder(71, 91);
-// newGame.createLadder(81,100);
-
-// newGame.createPlayer("Player3")
-// newGame.createPlayer("Player2")
-// newGame.createPlayer("Player1")
-
-// newGame.start();
+newGame.start();
